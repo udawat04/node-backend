@@ -3,7 +3,7 @@ const { createUser, getall, login, reset } = require("../controller/userControll
 const auth = require("../middleware/auth")
 
 
-const router = express()
+const router = express.Router();
 
 router.post("/create",createUser)
 router.get("/getall",auth,getall)
