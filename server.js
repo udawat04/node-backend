@@ -9,6 +9,11 @@ mongoose.connect("mongodb+srv://udawat:1234@udawat.1cdje.mongodb.net/Wensday");
 
 const app = express()
 
+const allowedOrigins = [
+  "http://locahost:5173",
+  "https://node-test-folder.vercel.app/",
+];
+
 app.use (cors())
 app.use(express.json())
 
