@@ -10,22 +10,24 @@ mongoose.connect("mongodb+srv://udawat:1234@udawat.1cdje.mongodb.net/Wensday");
 const app = express()
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://node-test-folder.vercel.app/",
+  "http://localhost:5173", // ✅ No trailing slash!
+  "https://node-frontend-gamma.vercel.app/",
 ];
 
-cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like Postman)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true); // ✅ Allowed
-      } else {
-        callback(new Error("❌ Not allowed by CORS"));
-      }
-    },
-    credentials: true // ✅ Needed if using cookies or auth headers
-  })
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Allow Postman
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("❌ Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+// ✅ APPLY CORS
+app.use(cors(corsOptions));
 
 app.use(express.json())
 
