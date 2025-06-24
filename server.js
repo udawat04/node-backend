@@ -14,7 +14,19 @@ const allowedOrigins = [
   "https://node-test-folder.vercel.app/",
 ];
 
-app.use (cors())
+cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // ✅ Allowed
+      } else {
+        callback(new Error("❌ Not allowed by CORS"));
+      }
+    },
+    credentials: true // ✅ Needed if using cookies or auth headers
+  })
+
 app.use(express.json())
 
 
