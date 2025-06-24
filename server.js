@@ -5,7 +5,7 @@ const userRouter = require("./routes/userRoute")
 const productRouter = require("./routes/productRoute")
 const cors = require("cors")
 
-mongoose.connect("mongodb://localhost:27017/wednesday");
+mongoose.connect("mongodb+srv://udawat:1234@udawat.1cdje.mongodb.net/Wensday");
 
 const app = express()
 
