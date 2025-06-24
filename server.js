@@ -10,7 +10,7 @@ mongoose.connect("mongodb+srv://udawat:1234@udawat.1cdje.mongodb.net/Wensday");
 const app = express()
 
 const allowedOrigins = [
-  "http://locahost:5173",
+  "http://localhost:5173",
   "https://node-test-folder.vercel.app/",
 ];
 
